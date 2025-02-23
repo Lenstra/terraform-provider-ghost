@@ -81,10 +81,17 @@ func (p *ghostProvider) Configure(ctx context.Context, req provider.ConfigureReq
 		return
 	}
 
+	address := config.Address.ValueString()
+	adminApiKey := config.AdminApiKey.ValueString()
+
 	// Default values to environment variables, but override
 	// with Terraform configuration value if set.
-	adminApiKey := os.Getenv("GHOST_ADMIN_API_KEY")
-	address := os.Getenv("GHOST_ADDRESS")
+	if address == "" {
+		address = os.Getenv("GHOST_ADDRESS")
+	}
+	if adminApiKey == "" {
+		adminApiKey = os.Getenv("GHOST_ADMIN_API_KEY")
+	}
 
 	// If any of the expected configurations are missing, return
 	// errors with provider-specific guidance.

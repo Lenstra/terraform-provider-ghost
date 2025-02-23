@@ -1,3 +1,8 @@
+## 0.0.2
+
+BUG FIXES:
+
+- Fix the configuration of the provider.
 
 ## 0.0.1
 

@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "provider": {
+    "name": "ghost",
+    "schema": {
+      "attributes": [
+        {
+          "name": "address",
+          "string": {
+            "optional_required": "optional"
+          }
+        },
+        {
+          "name": "admin_api_key",
+          "string": {
+            "optional_required": "optional"
+          }
+        }
+      ]
+    }
+  },
+  "datasources": [
+    {
+      "name": "site",
+      "schema": {
+        "attributes": [
+          {
+            "name": "title",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "description",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "logo",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "icon",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "cover_image",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "accent_color",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "locale",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "url",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "version",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "allow_external_signup",
+            "bool": {
+              "computed_optional_required": "computed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "users",
+      "schema": {
+        "attributes": [
+          {
+            "name": "users",
+            "list_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "id",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "slug",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "email",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "status",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "last_seen",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "comment_notifications",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "free_member_signup_notification",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "paid_subscription_started_notification",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "paid_subscription_canceled_notification",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "mention_notifications",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "recommendation_notifications",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "milestone_notifications",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "donation_notifications",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "created_at",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "updated_at",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  },
+                  {
+                    "name": "url",
+                    "string": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "theme",
+      "schema": {
+        "attributes": [
+          {
+            "name": "name",
+            "string": {
+              "computed_optional_required": "required"
+            }
+          },
+          {
+            "name": "activate",
+            "bool": {
+              "computed_optional_required": "optional"
+            }
+          },
+          {
+            "name": "source",
+            "string": {
+              "computed_optional_required": "required"
+            }
+          },
+          {
+            "name": "hash",
+            "string": {
+              "computed_optional_required": "required"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

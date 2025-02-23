@@ -1,0 +1,8 @@
+{
+  "ghost_theme.theme": {
+    "activate": "true",
+    "hash": "0d7724aa7d75a88178f93bd9acaedf2c23f8f1571fb4ccbaedbe7189b8ede638",
+    "name": "test-theme",
+    "source": "/Users/remi/src/terraform-provider-ghost/internal/provider/provider_ghost/../../../tests/casper.zip"
+  }
+}

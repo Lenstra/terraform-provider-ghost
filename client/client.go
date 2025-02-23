@@ -179,13 +179,13 @@ func (c *Client) toHttpRequest(ctx context.Context, r *request) (*http.Request, 
 func (c *Client) getToken() (string, error) {
 	parts := strings.Split(c.conf.AdminAPIKey, ":")
 	if len(parts) != 2 {
-		return "", fmt.Errorf("Invalid API key format")
+		return "", fmt.Errorf("invalid API key format")
 	}
 	id, secretHex := parts[0], parts[1]
 
 	secret, err := hex.DecodeString(secretHex)
 	if err != nil {
-		return "", fmt.Errorf("Error decoding secret: %w", err)
+		return "", fmt.Errorf("error decoding secret: %w", err)
 	}
 
 	iat := time.Now().Unix()
@@ -208,21 +208,6 @@ func (c *Client) do(ctx context.Context, r *request) (*http.Response, error) {
 		return nil, err
 	}
 
-	if c.conf.Logger.Trace().Enabled() {
-		var body []byte
-		if req.Body != nil {
-			body, err = io.ReadAll(req.Body)
-			if err != nil {
-				return nil, err
-			}
-		}
-		c.conf.Logger.Trace().Str("method", r.method).Str("path", r.path).Str("body", string(body)).Msg("request")
-		if req.Body != nil {
-			req.Body.Close()
-			req.Body = io.NopCloser(bytes.NewBuffer(body))
-		}
-	}
-
 	err = utils.LogRequest(c.conf.Logger.Trace(), req, nil)
 	if err != nil {
 		return nil, err
@@ -236,16 +221,6 @@ func (c *Client) do(ctx context.Context, r *request) (*http.Response, error) {
 	err = utils.LogResponse(c.conf.Logger.Trace(), resp, nil)
 	if err != nil {
 		return nil, err
-	}
-
-	if c.conf.Logger.Trace().Enabled() {
-		body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			return nil, err
-		}
-		c.conf.Logger.Trace().Str("method", r.method).Str("path", r.path).Int("status_code", resp.StatusCode).Str("body", string(body)).Msg("response")
-		resp.Body.Close()
-		resp.Body = io.NopCloser(bytes.NewBuffer(body))
 	}
 
 	return resp, nil

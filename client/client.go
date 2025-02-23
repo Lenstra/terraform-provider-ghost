@@ -126,6 +126,10 @@ func NewClient(config *Config) (*Client, error) {
 		config.HttpClient = defConfig.HttpClient
 	}
 
+	if config.Address == "" {
+		return nil, fmt.Errorf("Ghost address has not been set")
+	}
+
 	return &Client{conf: config}, nil
 }
 
